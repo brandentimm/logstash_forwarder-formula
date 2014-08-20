@@ -1,0 +1,36 @@
+{%- from 'logstash_forwarder/map.jinja' import logstash_forwarder with context %}
+{
+  "network": {
+    "servers": [
+      {%- for server in logstash_forwarder.servers %}
+      "{{server}}"{%- if loop.last != true %},{%- endif %}
+      {%- endfor %}
+    ],
+    "timeout": {{logstash_forwarder.timeout}},
+    "ssl ca": "{{logstash_forwarder.cert_path}}"
+  },
+  "files": [
+    {%- for file_group in logstash_forwarder.files %}
+    {
+      "paths": [
+        {%- for path in file_group.paths %}
+          {%- if loop.last %}
+            "{{path}}"
+          {%- else %}
+            "{{path}}",
+          {%- endif %}
+        {%- endfor %}
+        ],
+      "fields": { 
+        {%- for key, value in file_group.fields.iteritems() %}
+          {%- if loop.last %}
+            "{{key}}": "{{value}}"
+          {%- else %}
+            "{{key}}": "{{value}}",
+          {%- endif %}
+        {%- endfor %}
+        }
+    }{%- if loop.last != true %},{%- endif %}
+    {%- endfor %}
+   ]
+}
