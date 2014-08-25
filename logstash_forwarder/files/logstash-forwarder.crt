@@ -1,1 +1,0 @@
-{{pillar['logstash_forwarder']['cert_content']}}

@@ -9,11 +9,11 @@ logstash-forwarder-pkg:
     - require:
       - pkgrepo: logstash-forwarder-repo
 
-{%- if logstash_forwarder.cert_content is defined %}
+{%- if logstash_forwarder.cert_contents is defined %}
 logstash-forwarder-cert:
   file.managed:
     - name: {{logstash_forwarder.cert_path}}
-    - source: salt://logstash_forwarder/files/logstash-forwarder.crt
+    - contents_pillar: logstash_forwarder:cert_contents
     - user: root
     - group: root
     - mode: 664

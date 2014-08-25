@@ -4,13 +4,17 @@
     'svc': 'logstash-forwarder',
     'cert_path': '/etc/ssl/certs/logstash-forwarder.crt',
     'timeout': '15',
-    'servers': [ 'localhost:5000' ],
-    'files': {'paths': ['/var/log/syslog'], 'type': 'syslog'}
+    'files': [
+      {'paths': ['/var/log/syslog'], 'type': 'syslog'}
+    ]
   },
   'RedHat': {
   	'pkg': 'logstash-forwarder',
   	'svc': 'logstash-forwarder',
   	'cert_path': '/etc/pki/tls/certs/logstash-forwarder.crt',
-  	'files': {'paths': ['/var/log/messages'], 'type': 'syslog'}
+    'timeout': 15,
+    'files': [
+      {'paths': ['/var/log/messages'], 'type': 'syslog'}
+    ]
   }
 }, merge=salt['pillar.get']('logstash_forwarder')) %}
