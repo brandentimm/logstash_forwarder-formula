@@ -19,9 +19,10 @@ Available states
 ``logstash_forwarder``
 ------------
 
-Install the ``logstash-forwarder`` package, set up configuration file, and 
+Install the ``logstash-forwarder`` package, set up configuration file,  
 optionally set up the lumberjack certificate, and enable the service. This 
-formula currently supports Debian and RedHat based distributions, however the service init file for RedHat distributions is currently broken, see 
+formula currently supports Debian and RedHat based distributions, however the 
+service init file for RedHat distributions is currently broken, see 
 <https://github.com/elasticsearch/logstash-forwarder/pull/196>.
 
 
