@@ -72,7 +72,9 @@ The easiest way to understand the formula is to look at an example.  The followi
 In this example, we are supplying the lumberjack certificate through pillar.
 This is optional.  If you want to manage your certificates some other way,
 omit cert_contents and set cert_path to the path of the externally managed
-certificate.  
+certificate.  Note that cert_path is still required even if you manage
+the certificate manually, since the configuration file needs to include
+the path.
 
 The example pillar data would result in the following logstash-forwarder
 config:
