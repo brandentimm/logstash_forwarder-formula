@@ -1,0 +1,40 @@
+logstash_forwarder:
+        servers: 
+            - logs.example.com:5000
+        files:
+            -
+                paths:
+                    - /var/log/syslog
+                    - /var/log/auth.log
+                fields:
+                    type: syslog
+            -
+                paths:
+                    - /var/log/nginx/*access*
+                fields:
+                    type: nginx-access
+            - paths:
+                    - /var/log/nginx/*error*
+                fields:
+                    type: nginx-error
+        cert_path: /etc/ssl/certs/logstash-forwarder.crt
+        cert_contents: |
+            -----BEGIN CERTIFICATE-----
+            MIIDBzCCAe+gAwIBAgIJAImyMODCMdTFMA0GCSqGSIb3DQEBBQUAMBoxGDAWBgNV
+            BAMMD3d3dy5leGFtcGxlLmNvbTAeFw0xNDA4MjUyMzI0NTRaFw0yNDA4MjIyMzI0
+            NTRaMBoxGDAWBgNVBAMMD3d3dy5leGFtcGxlLmNvbTCCASIwDQYJKoZIhvcNAQEB
+            BQADggEPADCCAQoCggEBAJ2ESIFjHpcIj5bxVZRb7yDyK5e1fNw++Xx4nIiAPW9k
+            NjS1Om5FVxiNT7bUtLMo5xASTC7xeAv+BXHODJjRuU18O6sFvvBPQKTBrR86Uw1t
+            S6XaFlchMPgOVMQIypZbJrKF69pVwltlspkEqfPXq/80erWU6j97+17PDPK410eL
+            TRbzYfoL1XtZaClrIUEeCgMyfeM2JOYGgej1gEAk+nr/gBw9FCtAUk1ctTN3Hzia
+            21xHo6rRHQ5bv9bwh7N9zkoWmXTzOwYnmjBHllw9DOG33STpJxHWZ26HzlmnyWNG
+            BXblrgXOVrdVRA3XOuhB77Hv+sDjTLCieMYc7fhlK2cCAwEAAaNQME4wHQYDVR0O
+            BBYEFHVt4jOQFZ6JHO4av9Lzmn7IodHLMB8GA1UdIwQYMBaAFHVt4jOQFZ6JHO4a
+            v9Lzmn7IodHLMAwGA1UdEwQFMAMBAf8wDQYJKoZIhvcNAQEFBQADggEBAFX/TPoY
+            BqiCKgE0PFiVktUPZ/NeXrIXM3vKTe4ebtbCIdA1+hPfhSuJJjoJt9pUyGK7QNa1
+            25A5UeoXEwbaoe0Q/teZVviiwxBBivMyVQFFNW1Kt2jeQZ1w7/ePL0ZFcqGr8C4G
+            e4SyyH/TTCx429gvVuDY2TtNVL+zodRpX/4/+InUmS4i0+MF3ZAu5JZEx2Wdd1K5
+            27odvp1d7xi44aVI0hHKXblt6DoFEQfIYjUeIs3KFuyAxog2U3cVrgLjJPlARcDF
+            YRQ2WF1aPoB1CccqG0zn9thKJI0yhJUZ8xeY+KJx+/3/H6AckEduJZdNdWiaUi6p
+            NHQnOJJ/BYleQ0Q=
+            -----END CERTIFICATE-----
