@@ -84,7 +84,7 @@ config:
     {
       "network": {
         "servers": [
-          "logs.wei.wisc.edu:5000"
+          "logs.example.com:5000"
         ],
         "timeout": 15,
         "ssl ca": "/etc/ssl/certs/logstash-forwarder.crt"
