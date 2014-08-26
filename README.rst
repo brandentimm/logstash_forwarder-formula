@@ -111,8 +111,8 @@ with the following required keys:
 * servers: A list of logstash lumberjack endpoints, in "<host>:<port>" form
 * ssl ca: A string containing the path of the lumberjack certificate file
 * files: A list of dictionaries containing a list of files, and optionally
-    a dictionary of fields to annotate on each event (see logstash-forwarder 
-    documentation).
+  a dictionary of fields to annotate on each event (see logstash-forwarder 
+  documentation).
 
 By default, this formula will configure the 'ssl ca' path to 
 'logstash-forwarder.crt' in the system default certificate directory,
