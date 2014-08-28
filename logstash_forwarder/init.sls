@@ -43,3 +43,17 @@ logstash-forwarder-svc:
       {%- if logstash_forwarder.cert_content is defined %}
       - file: logstash-forwarder-cert
       {%- endif %}
+
+{%- if grains['os_family'] == 'RedHat' %}
+logstash-forwarder-init:
+  file.managed:
+    - name: /etc/init.d/{{logstash_forwarder.svc}}
+    - user: root
+    - group: root
+    - mode: 755
+    - source: salt://logstash_forwarder/files/logstash-forwarder.init
+    - watch_in:
+      - service: logstash-forwarder-svc
+    - require:
+      - pkg: logstash-forwarder-pkg
+{%- endif %}
