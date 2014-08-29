@@ -53,6 +53,7 @@ The easiest way to understand the formula is to look at an example.  The followi
                     - /var/log/auth.log
                 fields:
                     type: syslog
+        log_to_syslog: true
         cert_path: /etc/ssl/certs/logstash-forwarder.crt
         cert_contents: |
             -----BEGIN CERTIFICATE-----
@@ -105,6 +106,9 @@ config:
         }
        ]
     }
+
+It would also result in the log-to-syslog parameter being skipped when 
+starting logstash-forwarder in the service init file.
 
 Pillar Data Explained
 ---------------------

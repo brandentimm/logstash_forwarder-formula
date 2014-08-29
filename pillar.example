@@ -17,6 +17,7 @@ logstash_forwarder:
                     - /var/log/nginx/*error*
                 fields:
                     type: nginx-error
+        log_to_syslog: false
         cert_path: /etc/ssl/certs/logstash-forwarder.crt
         cert_contents: |
             -----BEGIN CERTIFICATE-----
