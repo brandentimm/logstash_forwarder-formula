@@ -21,12 +21,16 @@ Available states
 
 Install the ``logstash-forwarder`` package, set up configuration file,  
 optionally set up the lumberjack certificate, and enable the service. This 
-formula currently supports Debian and RedHat based distributions, however the 
-service init file for RedHat distributions is currently broken, see 
-<https://github.com/elasticsearch/logstash-forwarder/pull/196>.  Due to this,
-the formula provides it's own init script until such a time when the above 
-issue is resolved.
+formula currently supports Debian and RedHat based distributions.  Although the
+packages for Debian and RedHat provide service init files, we manage it within
+this formula for two reasons:
 
+* The RedHat service init file is currently broken, see 
+  <https://github.com/elasticsearch/logstash-forwarder/pull/196>
+* By default, init files for both distro families enables 'log-to-syslog' when invoking 
+  logstash-forwarder, which can pollute your syslog with unnecessary noise.  By default
+  this feature will remain on, but it can be turned off by setting logstash_forwarder:log_to_syslog
+  to false in your pillar data.
 
 Usage
 =====
