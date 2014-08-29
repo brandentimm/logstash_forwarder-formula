@@ -1,5 +1,8 @@
 {%- from 'logstash_forwarder/map.jinja' import logstash_forwarder with context %}
 
+# Do nothing unless the target is RedHat or Debian based
+
+{%- if grains['os_family'] == 'RedHat' or grains['os_family'] == 'Debian' %}
 include:
   - .repo
 
@@ -44,14 +47,14 @@ logstash-forwarder-svc:
       - file: logstash-forwarder-cert
       {%- endif %}
 
-{%- if grains['os_family'] == 'RedHat' %}
 logstash-forwarder-init:
   file.managed:
     - name: /etc/init.d/{{logstash_forwarder.svc}}
     - user: root
     - group: root
     - mode: 755
-    - source: salt://logstash_forwarder/files/logstash-forwarder.init
+    - source: {{ logstash_forwarder.init_file }}
+    - template: jinja
     - watch_in:
       - service: logstash-forwarder-svc
     - require:
