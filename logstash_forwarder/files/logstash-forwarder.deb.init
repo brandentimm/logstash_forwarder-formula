@@ -18,8 +18,8 @@ PATH=/sbin:/usr/sbin:/bin:/usr/bin
 DESC="log shipper"
 NAME=logstash-forwarder
 DAEMON=/opt/logstash-forwarder/bin/logstash-forwarder
-{%- if logstash_forwarder.log_to_syslog %}
-DAEMON_ARGS="-config /etc/logstash-forwarder -spool-size 100 -log-to-syslog"
+{%- if logstash_forwarder.log_to_syslog == True %}
+DAEMON_ARGS="-config /etc/logstash-forwarder -spool-size 100 {% if logstash_forwarder.log_to_syslog %}-log-to-syslog{%- endif %}"
 {%- else %}
 DAEMON_ARGS="-config /etc/logstash-forwarder -spool-size 100"
 {%- endif %}
