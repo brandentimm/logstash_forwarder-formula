@@ -1,8 +1,7 @@
+# Do nothing unless the target is RedHat or Debian based
+{%- if grains['os_family'] == 'RedHat' or grains['os_family'] == 'Debian' %}
 {%- from 'logstash_forwarder/map.jinja' import logstash_forwarder with context %}
 
-# Do nothing unless the target is RedHat or Debian based
-
-{%- if grains['os_family'] == 'RedHat' or grains['os_family'] == 'Debian' %}
 include:
   - .repo
 
