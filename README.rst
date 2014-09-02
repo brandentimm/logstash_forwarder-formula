@@ -128,6 +128,8 @@ Overriding Platform Defaults
 -------------------
 This formula sets up certain defaults in map.jinja, specifically:
 
+* logstash-forwarder will send it's own messages to syslog.  You may want to turn this off once you
+  have a working configuration to keep your syslog from being too noisy.
 * Name of the logstash-forwarder package is logstash-forwarder
 * Name of the logstash-forwarder service is logstash-forwarder
 * The latest version of logstash available will be installed  
@@ -137,6 +139,7 @@ This formula sets up certain defaults in map.jinja, specifically:
 These settings can be overridden by adding the appropriate keys to your
 pillar data, for example::
     logstash_forwarder:
+        log_to_syslog: false
         pkg: logstash-forwarder-altversion
         svc: logstash-forwarder-alterversion
         timeout: 90
