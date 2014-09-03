@@ -13,7 +13,8 @@ logstash_forwarder:
                     - /var/log/nginx/*access*
                 fields:
                     type: nginx-access
-            - paths:
+            -
+                paths:
                     - /var/log/nginx/*error*
                 fields:
                     type: nginx-error
