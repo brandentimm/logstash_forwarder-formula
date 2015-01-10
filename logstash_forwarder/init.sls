@@ -42,7 +42,7 @@ logstash-forwarder-svc:
     - enable: true
     - require:
       - pkg: logstash-forwarder-pkg
-      {%- if logstash_forwarder.cert_content is defined %}
+      {%- if logstash_forwarder.cert_contents is defined %}
       - file: logstash-forwarder-cert
       {%- endif %}
 
