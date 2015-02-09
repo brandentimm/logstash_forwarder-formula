@@ -25,12 +25,8 @@ formula currently supports Debian and RedHat based distributions.  Although the
 packages for Debian and RedHat provide service init files, we manage it within
 this formula for two reasons:
 
-<<<<<<< HEAD
 * The RedHat service init file is currently broken, see 
   <https://github.com/elasticsearch/logstash-forwarder/pull/196>
-=======
-* The RedHat service init file is currently broken, see <https://github.com/elasticsearch/logstash-forwarder/pull/196>
->>>>>>> cddf066408160e5a7f784c865bb58f1d74846580
 * By default, init files for both distro families enables 'log-to-syslog' when invoking 
   logstash-forwarder, which can pollute your syslog with unnecessary noise.  By default
   this feature will remain on, but it can be turned off by setting logstash_forwarder:log_to_syslog
