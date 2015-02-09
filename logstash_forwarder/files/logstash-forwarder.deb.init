@@ -1,11 +1,16 @@
 {%- from 'logstash_forwarder/map.jinja' import logstash_forwarder with context %}
 #! /bin/sh
 ### BEGIN INIT INFO
+<<<<<<< HEAD
 # Provides:          skeleton
+=======
+# Provides:          logstash-forwarder
+>>>>>>> cddf066408160e5a7f784c865bb58f1d74846580
 # Required-Start:    $remote_fs $syslog
 # Required-Stop:     $remote_fs $syslog
 # Default-Start:     2 3 4 5
 # Default-Stop:      0 1 6
+<<<<<<< HEAD
 # Short-Description: Example initscript
 # Description:       This file should be used to construct scripts to be
 #                    placed in /etc/init.d.
@@ -13,6 +18,10 @@
 
 # Author: Jordan Sissel <jordan.sissel@dreamhost.com>
 
+=======
+### END INIT INFO
+
+>>>>>>> cddf066408160e5a7f784c865bb58f1d74846580
 # PATH should only include /usr/* if it runs after the mountnfs.sh script
 PATH=/sbin:/usr/sbin:/bin:/usr/bin
 DESC="log shipper"

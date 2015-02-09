@@ -13,12 +13,14 @@ logstash_forwarder:
                     - /var/log/nginx/*access*
                 fields:
                     type: nginx-access
-            - paths:
+            -
+                paths:
                     - /var/log/nginx/*error*
                 fields:
                     type: nginx-error
         log_to_syslog: false
         cert_path: /etc/ssl/certs/logstash-forwarder.crt
+        log_to_syslog: true
         cert_contents: |
             -----BEGIN CERTIFICATE-----
             MIIDBzCCAe+gAwIBAgIJAImyMODCMdTFMA0GCSqGSIb3DQEBBQUAMBoxGDAWBgNV

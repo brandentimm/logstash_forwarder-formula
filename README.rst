@@ -25,8 +25,12 @@ formula currently supports Debian and RedHat based distributions.  Although the
 packages for Debian and RedHat provide service init files, we manage it within
 this formula for two reasons:
 
+<<<<<<< HEAD
 * The RedHat service init file is currently broken, see 
   <https://github.com/elasticsearch/logstash-forwarder/pull/196>
+=======
+* The RedHat service init file is currently broken, see <https://github.com/elasticsearch/logstash-forwarder/pull/196>
+>>>>>>> cddf066408160e5a7f784c865bb58f1d74846580
 * By default, init files for both distro families enables 'log-to-syslog' when invoking 
   logstash-forwarder, which can pollute your syslog with unnecessary noise.  By default
   this feature will remain on, but it can be turned off by setting logstash_forwarder:log_to_syslog
@@ -133,6 +137,8 @@ Overriding Platform Defaults
 -------------------
 This formula sets up certain defaults in map.jinja, specifically:
 
+* logstash-forwarder will send it's own messages to syslog.  You may want to turn this off once you
+  have a working configuration to keep your syslog from being too noisy.
 * Name of the logstash-forwarder package is logstash-forwarder
 * Name of the logstash-forwarder service is logstash-forwarder
 * The latest version of logstash available will be installed  
@@ -142,6 +148,7 @@ This formula sets up certain defaults in map.jinja, specifically:
 These settings can be overridden by adding the appropriate keys to your
 pillar data, for example::
     logstash_forwarder:
+        log_to_syslog: false
         pkg: logstash-forwarder-altversion
         svc: logstash-forwarder-alterversion
         timeout: 90

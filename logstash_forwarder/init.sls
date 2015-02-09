@@ -1,3 +1,5 @@
+# Do nothing unless the target is RedHat or Debian based
+{%- if grains['os_family'] == 'RedHat' or grains['os_family'] == 'Debian' %}
 {%- from 'logstash_forwarder/map.jinja' import logstash_forwarder with context %}
 
 # Do nothing unless the target is RedHat or Debian based
@@ -43,7 +45,7 @@ logstash-forwarder-svc:
     - enable: true
     - require:
       - pkg: logstash-forwarder-pkg
-      {%- if logstash_forwarder.cert_content is defined %}
+      {%- if logstash_forwarder.cert_contents is defined %}
       - file: logstash-forwarder-cert
       {%- endif %}
 
@@ -59,4 +61,8 @@ logstash-forwarder-init:
       - service: logstash-forwarder-svc
     - require:
       - pkg: logstash-forwarder-pkg
+<<<<<<< HEAD
 {%- endif %}
+=======
+{%- endif %}
+>>>>>>> cddf066408160e5a7f784c865bb58f1d74846580
