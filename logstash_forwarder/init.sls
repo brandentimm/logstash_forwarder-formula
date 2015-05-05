@@ -62,4 +62,4 @@ logstash-forwarder-init:
     - require:
       - pkg: logstash-forwarder-pkg
 {%- endif %}
-
+{%- endif %}
